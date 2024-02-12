@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="studentsApp" ng-controller="studentsController">
+
+<head>
+
+    <script src="../../scripts/angular.min.js"></script>
+    <script src="../../scripts/angular-route.min.js"></script>
+
+    <script src="../students/scripts/students.js"></script>
+
+    <script src="../students/scripts/list.js"></script>
+    <script src="../students/scripts/create.js"></script>
+    <script src="../students/scripts/update.js"></script>
+
+    <meta charset="utf-8" />
+    <base href="/students/" /> <!-- Removed extra equal sign -->
+    <title>AngularJS Training</title>
+
+</head>
+
+<body>
+
+    <ng-view></ng-view>
+
+    <!--<h3>Index HTML: {{ test }}</h3>
+
+    <input type="text" ng-model="search" />
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Age</td>
+                <td>Address</td>
+            </tr>--> <!-- Added closing tag for <tr> -->
+        <!--</thead>
+
+        <tr ng-repeat="array in arrays | filter: search">
+            <td>{{array.name}}</td>
+            <td>{{array.age}}</td>
+            <td>{{array.address}}</td>
+        </tr>
+    </table>-->
+</body>
+</html>

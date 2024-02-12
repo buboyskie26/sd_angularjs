@@ -1,0 +1,52 @@
+﻿
+
+
+<button type="button" ng-click="create()">Add Users</button>
+<a href="forum">Go to Forum</a>
+
+<input type="text" ng-model="search1" />
+
+<!--Came from the users controller -> scope.profile-->
+<h3>Hi {{ profile.Name }}</h3>
+
+<div>
+
+    <label class="pull-left m-t-10 m-l-10">items per page: </label>
+    <select ng-model="selectvalue" class="form-control" style="width: 80px">
+        <option value="15">15</option>
+        <option value="30">30</option>
+        <option value="45">45</option>
+    </select>
+
+</div>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <td>Username</td>
+            <td>First Name</td>
+            <td>Email</td>
+        </tr> <!-- Added closing tag for <tr> -->
+    </thead>
+   
+    <tr ng-repeat="user in data = (users | filter: search1) | limitTo:selectvalue:selectvalue*(page-1)">
+
+        <td>{{user.Username | uppercase}}</td>
+        <td>{{user.Firstname}}</td>
+        <td>{{user.Email}}</td>
+        <td>
+            <!--edit should be created as $scope.edit in the controller-->
+            <button ng-click="edit(user.Id)">Edit</button>
+            <button ng-click="delete(user.Id)">Delete</button>
+        </td>
+
+    </tr>
+</table>
+ 
+<div>
+    <uib-pagination class="pagination-sm pagination pull-right" total-items="data.length" ng-model="page"
+        previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="selectvalue"></uib-pagination>
+</div>
+
+

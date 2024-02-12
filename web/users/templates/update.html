@@ -1,0 +1,38 @@
+﻿
+
+<form ng-submit="edit(userObject)">
+
+    <div>
+        <label>Username</label>
+        <input type="text" ng-model="userObject.Username" />
+    </div>
+    <div>
+        <label>First Name</label>
+        <input type="text" ng-model="userObject.Firstname" />
+    </div>
+    <div>
+        <label>Last Name</label>
+        <input type="text" ng-model="userObject.Lastname" />
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="text" ng-model="userObject.Email" />
+    </div>
+    <div>
+        <label>Contact Number</label>
+        <input type="text" ng-model="userObject.ContactNumber" />
+    </div>
+
+    <div>
+        <label>User Type</label>
+        <select class="form-control" name="Usertype" ng-model="userObject.UsertypeId" ng-options="c.Id as c.Name for c in usertypes | orderBy: 'Name'"
+                g-change="getUsertypes(user.UsertypeId)" style="width: 150px;">
+            <option value="">Select an option</option>
+        </select>
+    </div>
+
+    <a href="list">Back</a>
+
+    <button type="submit">Edit</button>
+
+</form>
