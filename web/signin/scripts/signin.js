@@ -27,7 +27,8 @@ app.controller('signinController', function ($scope, $rootScope, services, $wind
                 }).then(function () {
 
                     $rootScope.signInValue = 555;
-                    $window.location.href = "../users/index.html";
+                /*    $window.location.href = "../users/index.html";*/
+                    $window.location.href = "../students/index.html";
                 })
             } else {
 

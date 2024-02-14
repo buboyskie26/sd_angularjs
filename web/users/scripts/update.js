@@ -1,5 +1,6 @@
-﻿var app = angular.module('usersApp');
+﻿
 
+var app = angular.module('usersApp');
 
 
 app.controller('updateController', function ($scope, $rootScope, services, $location) {

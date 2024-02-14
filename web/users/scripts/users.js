@@ -142,7 +142,7 @@ app.service('services', function ($http, $window) {
             data: data
 
         }).then(function (response) {
-            return response.data;
+            return response;
         }).catch(function (err) {
             return err;
         });

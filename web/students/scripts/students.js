@@ -1,21 +1,21 @@
 ﻿
 
-var app = angular.module('studentsApp', ['ngRoute']);
+var app = angular.module('studentsApp', ['ngRoute', 'angularUtils.directives.dirPagination', 'ui.bootstrap']);
 
 app.config(function ($routeProvider, $locationProvider) {
     //
     $routeProvider
         .when("/list", {
             templateUrl: "templates/list.html",
-            controller: "listController"
+            controller: "studentlistController"
         })
         .when("/create", {
             templateUrl: "templates/create.html",
-            controller: "createController"
+            controller: "studentCreateController"
         })
         .when("/update", {
             templateUrl: "templates/update.html",
-            controller: "updateController"
+            controller: "studentUpdateController"
         })
         .otherwise({ redirectTo: '/list' });
 
@@ -24,20 +24,70 @@ app.config(function ($routeProvider, $locationProvider) {
 });
 
 
+
+
+
+app.service('services', function ($http, $window) {
+
+    var services = {};
+    var token = localStorage.getItem("token");
+    var linkUrl = localStorage.getItem('link');
+
+    var studentUrl = 'http://localhost:44397/';
+
+    services.getStudents = function () {
+
+        return $http({
+            method: 'GET',
+            url: studentUrl + 'api/students',
+        }).then(function (response) {
+            return response.data;
+        }).catch(function (err) {
+            return err;
+        });
+    }
+    services.getSingleStudent = function (id) {
+
+        return $http({
+            method: 'GET',
+            url: studentUrl + 'api/students/' + id,
+        }).then(function (response) {
+            return response.data;
+        }).catch(function (err) {
+            return err;
+        });
+    }
+
+    services.createStudent = function (data) {
+
+        return $http({
+            method: 'POST',
+            url: studentUrl + 'api/students',
+            data: data
+        }).then(function (response) {
+            return response;
+        }).catch(function (err) {
+            return err;
+        });
+    }
+    services.updateStudent = function (id, data) {
+
+        return $http({
+            method: 'PUT',
+            url: studentUrl + 'api/students/' + id,
+            data:data
+        }).then(function (response) {
+            return response;
+        }).catch(function (err) {
+            return err;
+        });
+    }
+    
+
+    return services;
+});
+
 app.controller('studentsController', function ($scope, $window) {
 
-    // Basic directive
-    $scope.test = ".NET Framework";
-
-    $scope.arrays = [
-        {
-            name: ".NET Framework", age: 25, address: "United States"
-        },
-        {
-           name: "Javascript", age: 20, address: "Australia"
-        }
-    ];
 
 })
-
-

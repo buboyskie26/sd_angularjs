@@ -17,8 +17,9 @@
         <option value="30">30</option>
         <option value="45">45</option>
     </select>
-
 </div>
+
+<h3 class="text-center">Users Management</h3>
 
 <table class="table">
 
@@ -29,7 +30,7 @@
             <td>Email</td>
         </tr> <!-- Added closing tag for <tr> -->
     </thead>
-   
+
     <tr ng-repeat="user in data = (users | filter: search1) | limitTo:selectvalue:selectvalue*(page-1)">
 
         <td>{{user.Username | uppercase}}</td>
@@ -43,10 +44,10 @@
 
     </tr>
 </table>
- 
+
 <div>
     <uib-pagination class="pagination-sm pagination pull-right" total-items="data.length" ng-model="page"
-        previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="selectvalue"></uib-pagination>
+                    previous-text="&lsaquo;" next-text="&rsaquo;" items-per-page="selectvalue"></uib-pagination>
 </div>
 
 
